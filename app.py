@@ -5,6 +5,8 @@ import os
 import ast
 import plotly.express as px
 import geopandas as gpd
+from folium.features import GeoJsonPopup, GeoJsonTooltip
+from streamlit_folium import st_folium
 
 
 st.set_page_config(layout="wide")
@@ -18,4 +20,4 @@ print("Loading Shapefile...")
 
 shapefile = gpd.read_file("./Data-for-CivTech-Exploration/ScottishForestry-TreeHealth-SurveySites-Oct23.shp")
 df = shapefile[(shapefile['pest_suspe']=='P. ramorum') & (shapefile['flag_sourc']=='Helicopter Survey') & (shapefile['host_speci']=='Larch') ].reset_index(drop=True)
-st.markdown(df.explore(column = 'lab_result'))
+st_folium(df.explore(column = 'lab_result'))
