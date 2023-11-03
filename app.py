@@ -16,4 +16,6 @@ print("Loading Shapefile...")
 # If using your files, replace below filename ("Clean_Streets_Index_Grids_2018_Quarter_3.shp") with the 
 # shapefile filename you uploaded. 
 
-shapefile = gpd.read_file("/content/ScottishForestry-TreeHealth-SurveySites-Oct23.shp")
+shapefile = gpd.read_file("/Data-for-CivTech-Exploration/ScottishForestry-TreeHealth-SurveySites-Oct23.shp")
+df = shapefile[(shapefile['pest_suspe']=='P. ramorum') & (shapefile['flag_sourc']=='Helicopter Survey') & (shapefile['host_speci']=='Larch') ].reset_index(drop=True)
+st.plotly(df.explore(column = 'lab_result'))
