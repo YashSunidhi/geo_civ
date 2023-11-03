@@ -11,4 +11,4 @@ streamlit-option-menu
 matplotlib
 cartopy 
 mapclassify
-streamlit-folium
+
